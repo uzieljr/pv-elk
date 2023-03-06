@@ -2,7 +2,7 @@
 elasticsearchHosts: "https://elasticsearch-master:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
-elasticsearchCredentialSecret: 1234
+elasticsearchCredentialSecret: elasticsearch-master-credentials
 
 replicas: 1
 
