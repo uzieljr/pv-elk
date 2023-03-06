@@ -1,5 +1,5 @@
 ---
-elasticsearchHosts: "https://elasticsearch-master:9200"
+elasticsearchHosts: "https://elasticsearch:9200"
 elasticsearchCertificateSecret: elasticsearch-master-certs
 elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-master-credentials
@@ -136,7 +136,7 @@ service:
   httpPortName: http
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   pathtype: ImplementationSpecific
   annotations: {}
