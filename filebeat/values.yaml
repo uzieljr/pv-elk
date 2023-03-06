@@ -6,7 +6,7 @@ daemonset:
   labels: {}
   affinity: {}
   # Include the daemonset
-  enabled: true
+  enabled: false
   # Extra environment variables for Filebeat container.
   envFrom: []
   # - configMapRef:
@@ -88,7 +88,7 @@ deployment:
   labels: {}
   affinity: {}
   # Include the deployment
-  enabled: false
+  enabled: true
   # Extra environment variables for Filebeat container.
   envFrom: []
   # - configMapRef:
@@ -147,7 +147,7 @@ deployment:
   resources:
     requests:
       cpu: "100m"
-      memory: "100Mi"
+      memory: "300Mi"
     limits:
       cpu: "1000m"
       memory: "200Mi"
