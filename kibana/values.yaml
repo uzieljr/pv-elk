@@ -57,7 +57,7 @@ resources:
     cpu: "1000m"
     memory: "2Gi"
 
-protocol: https
+protocol: http
 
 serverHost: "0.0.0.0"
 
