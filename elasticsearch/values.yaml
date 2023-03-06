@@ -21,8 +21,8 @@ roles:
   - remote_cluster_client
   - transform
 
-replicas: 1
-minimumMasterNodes: 1
+replicas: 3
+minimumMasterNodes: 2
 
 esMajorVersion: ""
 
@@ -44,11 +44,9 @@ esJvmOptions: {}
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
-extraEnvs:
-   - name: ELASTIC_PASSWORD
-     value: elastic
-   - name: ELASTIC_USERNAME
-     value: elastic
+extraEnvs: []
+#  - name: MY_ENVIRONMENT_VAR
+#    value: the_value_goes_here
 
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
@@ -60,7 +58,7 @@ envFrom: []
 # Disable it to use your own elastic-credential Secret.
 secret:
   enabled: true
-  password: "elastic" # generated randomly if not defined
+  password: "" # generated randomly if not defined
 
 # A list of secrets and their paths to mount inside the pod
 # This is useful for mounting certificates for security and for mounting
@@ -87,15 +85,15 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-esJavaOpts: "-Xmx128m -Xms128m" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
-    cpu: "100m"
-    memory: "512M"
+    cpu: "1000m"
+    memory: "2Gi"
   limits:
     cpu: "1000m"
-    memory: "512M"
+    memory: "2Gi"
 
 initResources: {}
 # limits:
@@ -108,11 +106,10 @@ initResources: {}
 networkHost: "0.0.0.0"
 
 volumeClaimTemplate:
-  accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "standard"
+  accessModes: ["ReadWriteOnce"]
   resources:
     requests:
-      storage: 100M
+      storage: 30Gi
 
 rbac:
   create: false
@@ -175,7 +172,7 @@ antiAffinityTopologyKey: "kubernetes.io/hostname"
 
 # Hard means that by default pods will only be scheduled if there are enough nodes for them
 # and that they will never end up on the same node. Setting this to soft will do this "best effort"
-antiAffinity: "soft"
+antiAffinity: "hard"
 
 # This is the node affinity settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
@@ -256,9 +253,9 @@ tolerations: []
 # Enabling this will publicly expose your Elasticsearch instance.
 # Only enable this if you have security enabled on your cluster
 ingress:
-  enabled: true
-  annotations:
-   kubernetes.io/ingress.class: nginx
+  enabled: false
+  annotations: {}
+  # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   className: "nginx"
   pathtype: ImplementationSpecific
