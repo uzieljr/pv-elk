@@ -88,7 +88,7 @@ deployment:
   labels: {}
   affinity: {}
   # Include the deployment
-  enabled: true
+  enabled: false
   # Extra environment variables for Filebeat container.
   envFrom: []
   # - configMapRef:
@@ -147,7 +147,7 @@ deployment:
   resources:
     requests:
       cpu: "100m"
-      memory: "300Mi"
+      memory: "100Mi"
     limits:
       cpu: "1000m"
       memory: "200Mi"
