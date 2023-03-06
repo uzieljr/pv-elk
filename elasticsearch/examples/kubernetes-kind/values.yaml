@@ -8,11 +8,11 @@ esJavaOpts: "-Xmx128m -Xms128m"
 # Allocate smaller chunks of memory per pod.
 resources:
   requests:
-    cpu: "100m"
-    memory: "512M"
+    cpu: "200m"
+    memory: "1Gi"
   limits:
-    cpu: "1000m"
-    memory: "512M"
+    cpu: "2000m"
+    memory: "1Gi"
 
 # Request smaller persistent volumes.
 volumeClaimTemplate:
