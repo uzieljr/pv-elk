@@ -205,7 +205,7 @@ readinessProbe:
   failureThreshold: 3
   initialDelaySeconds: 10
   periodSeconds: 10
-  timeoutSeconds: 5
+  timeoutSeconds: 30
 
 # Whether this chart should self-manage its service account, role, and associated role binding.
 managedServiceAccount: true
