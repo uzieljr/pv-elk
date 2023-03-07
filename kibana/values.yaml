@@ -33,10 +33,10 @@ envFrom: []
 # A list of secrets and their paths to mount inside the pod
 # This is useful for mounting certificates for security and for mounting
 # the X-Pack license
-secretMounts: []
-#  - name: elasticsearch-master-certs
-#    secretName: elasticsearch-master-certs
-#    path: /usr/share/logstash/config/certs
+secretMounts: 
+  - name: elasticsearch-master-certs
+    secretName: elasticsearch-master-certs
+    path: /usr/share/logstash/config/certs
 
 hostAliases: []
 #- ip: "127.0.0.1"
