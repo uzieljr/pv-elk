@@ -12,11 +12,11 @@ replicas: 1
 extraEnvs:
   - name: "NODE_OPTIONS"
     value: "--max-old-space-size=1800"
-  - name: "ELASTICSEARCH_USERNAME"
-    valueFrom:
-      secretKeyRef:
-        name: elasticsearch-master-credentials
-        key: username
+  # - name: "ELASTICSEARCH_USERNAME"
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: elasticsearch-master-credentials
+  #       key: username
   - name: "ELASTICSEARCH_PASSWORD"
     valueFrom:
       secretKeyRef:
