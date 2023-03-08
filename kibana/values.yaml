@@ -16,9 +16,9 @@ extraEnvs:
 #    value: the_value_goes_here
 
 # Allows you to load environment variables from kubernetes secret or config map
-envFrom: []
-# - secretRef:
-#     name: env-secret
+envFrom:
+   - secretRef:
+       name: elasticsearch-master-credentials
 # - configMapRef:
 #     name: config-map
 
