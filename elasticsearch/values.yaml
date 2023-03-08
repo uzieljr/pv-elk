@@ -21,8 +21,8 @@ roles:
   - remote_cluster_client
   - transform
 
-replicas: 3
-minimumMasterNodes: 2
+replicas: 1
+minimumMasterNodes: 1
 
 esMajorVersion: ""
 
@@ -195,11 +195,11 @@ service:
   enabled: true
   labels: {}
   labelsHeadless: {}
-  type: ClusterIP
+  type: NodePort
   # Consider that all endpoints are considered "ready" even if the Pods themselves are not
   # https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
-  publishNotReadyAddresses: false
-  nodePort: ""
+  #publishNotReadyAddresses: false
+  nodePort: "30234"
   annotations: {}
   httpPortName: http
   transportPortName: transport
