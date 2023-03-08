@@ -49,11 +49,7 @@ daemonset:
                         containers.ids:
                         - "${data.kubernetes.container.id}"
                         paths:
-                          - /var/log/containers/*${data.kubernetes.container.id}.log
-
-      setup.dashboards.enabled: true
-      setup.kibana:
-        host: "kibana-kibana:5601"            
+                          - /var/log/containers/*${data.kubernetes.container.id}.log      
       output.logstash:
         hosts: ["logstash-logstash:5044"]
 
