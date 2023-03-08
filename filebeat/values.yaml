@@ -150,7 +150,7 @@ daemonset:
 #   tolerations: []
 
 # Replicas being used for the filebeat deployment
-#replicas: 1
+replicas: 1
 
 extraContainers: ""
 # - name: dummy-init
