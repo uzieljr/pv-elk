@@ -53,7 +53,7 @@ daemonset:
 
       setup.dashboards.enabled: true
       setup.kibana:
-        host: "kibana-service:5601"            
+        host: "kibana-kibana:5601"            
       output.logstash:
         hosts: ["logstash-logstash:5044"]
 
