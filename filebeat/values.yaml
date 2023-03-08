@@ -34,16 +34,26 @@ daemonset:
   # Allows you to add any config files in /usr/share/filebeat
   # such as filebeat.yml for daemonset
   filebeatConfig:
-    filebeat.yml: |
+    filebeat.yml: |-
       filebeat.autodiscover:
         providers:
           - type: kubernetes
-            node: ${NODE_NAME}
-            hints.enabled: true
-            hints.default_config:
-              type: container
-              paths:
-                - /var/log/containers/*.log
+            templates:
+              - condition:
+                  equals: 
+                    kubernetes.namespace: app
+                config:
+                  - module: nginx
+                    access.input:
+                        type: docker
+                        containers.ids:
+                        - "${data.kubernetes.container.id}"
+                        paths:
+                          - /var/log/containers/*${data.kubernetes.container.id}.log
+
+      setup.dashboards.enabled: true
+      setup.kibana:
+        host: "kibana-service:5601"            
       output.logstash:
         hosts: ["logstash-logstash:5044"]
 
