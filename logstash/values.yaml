@@ -20,15 +20,7 @@ logstashPipeline:
         port => 5044
       }
     }
-
-    output {
-      elasticsearch {
-        hosts: ["http://elasticsearch-master:9200"] 
-        username: "elastic"
-        password: "1234"
-        index => "%{[@metadata][beat]}-%{[@metadata][version]}" 
-      }
-    } 
+    output { elasticsearch { hosts => "http://elasticsearch-master:9200" } }
 
 # Allows you to add any pattern files in your custom pattern dir
 logstashPatternDir: "/usr/share/logstash/patterns/"
@@ -40,16 +32,16 @@ logstashPattern: {}
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
 extraEnvs: []
-  #  - name: "ELASTICSEARCH_USERNAME"
-  #    valueFrom:
-  #      secretKeyRef:
-  #        name: elasticsearch-master-credentials
-  #        key: username
-  #  - name: "ELASTICSEARCH_PASSWORD"
-  #    valueFrom:
-  #      secretKeyRef:
-  #        name: elasticsearch-master-credentials
-  #        key: password
+  # - name: "ELASTICSEARCH_USERNAME"
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: elasticsearch-master-credentials
+  #       key: username
+  # - name: "ELASTICSEARCH_PASSWORD"
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: elasticsearch-master-credentials
+  #       key: password
 
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
@@ -76,9 +68,9 @@ secrets: []
 
 # A list of secrets and their paths to mount inside the pod
 secretMounts: []
-  #  - name: elasticsearch-master-certs
-  #    secretName: elasticsearch-master-certs
-  #    path: /usr/share/logstash/config/certs
+  # - name: elasticsearch-master-certs
+  #   secretName: elasticsearch-master-certs
+  #   path: /usr/share/logstash/config/certs
 
 hostAliases: []
 #- ip: "127.0.0.1"
@@ -100,11 +92,11 @@ logstashJavaOpts: "-Xmx1g -Xms1g"
 
 resources:
   requests:
-    cpu: "2000m"
-    memory: "2Gi"
+    cpu: "100m"
+    memory: "1536Mi"
   limits:
-    cpu: "2000m"
-    memory: "2Gi"
+    cpu: "1000m"
+    memory: "1536Mi"
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
