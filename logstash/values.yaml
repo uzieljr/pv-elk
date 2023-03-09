@@ -20,7 +20,7 @@ logstashPipeline:
         port => 5044
       }
     }
-    output { elasticsearch { hosts => "http://10.97.24.165:9200" } }
+    output { elasticsearch { hosts => "http://10.103.73.252:9200" } }
 
 # Allows you to add any pattern files in your custom pattern dir
 logstashPatternDir: "/usr/share/logstash/patterns/"
