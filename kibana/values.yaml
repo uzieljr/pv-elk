@@ -29,7 +29,7 @@ secretMounts:
   - name: kibana-keystore
     secretName: kibana-keystore
     path: /usr/share/kibana/data/kibana.keystore
-    subPath: kibana.keystore # optional
+ #   subPath: kibana.keystore # optional
 
 hostAliases: []
 #- ip: "127.0.0.1"
