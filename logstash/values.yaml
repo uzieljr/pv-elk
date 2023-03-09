@@ -67,10 +67,10 @@ secrets: []
 #      cert.key.filepath: "secrets.crt" # The path to file should be relative to the `values.yaml` file.
 
 # A list of secrets and their paths to mount inside the pod
-secretMounts: []
-  # - name: elasticsearch-master-certs
-  #   secretName: elasticsearch-master-certs
-  #   path: /usr/share/logstash/config/certs
+secretMounts: #[]
+   - name: elasticsearch-master-certs
+     secretName: elasticsearch-master-certs
+     path: /usr/share/logstash/config/certs
 
 hostAliases: []
 #- ip: "127.0.0.1"
