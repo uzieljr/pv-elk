@@ -9,8 +9,7 @@ replicas: 1
 logstashConfig:
   logstash.yml: |
     http.host: 0.0.0.0
-    xpack.monitoring.enabled: true
-    xpack.monitoring.elasticsearch.url: http://elasticsearch-master:9200
+    xpack.monitoring.enabled: false
 
 # Allows you to add any pipeline files in /usr/share/logstash/pipeline/
 ### ***warn*** there is a hardcoded logstash.conf in the image, override it first
@@ -68,7 +67,7 @@ secrets: []
 #      cert.key.filepath: "secrets.crt" # The path to file should be relative to the `values.yaml` file.
 
 # A list of secrets and their paths to mount inside the pod
-secretMounts: []
+secretMounts: 
   # - name: elasticsearch-master-certs
   #   secretName: elasticsearch-master-certs
   #   path: /usr/share/logstash/config/certs
