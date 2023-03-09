@@ -200,7 +200,7 @@ service:
   # Consider that all endpoints are considered "ready" even if the Pods themselves are not
   # https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec
   publishNotReadyAddresses: false
-  nodePort: ""
+  nodePort: "9200"
   annotations: {}
   httpPortName: http
   transportPortName: transport
